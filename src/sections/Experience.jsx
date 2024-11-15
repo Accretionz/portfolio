@@ -7,45 +7,43 @@ import Developer from "../components/Developer";
 
 const Experience = () => {
   return (
-    <section className="c-space my-20">
-      <div className="w-full text-white-600">
-        <h3 className="head-text">My Work Experience</h3>
-        <div className="work-container">
-          <div className="work-canvas">
-            <Canvas>
-              <ambientLight intensity={7} />
-              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-              <directionalLight position={[10, 10, 10]} intensity={1} />
-              <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
-              <Suspense fallback={<CanvasLoader />}>
-                <Developer position-y={-3} scale={3} />
-              </Suspense>
-            </Canvas>
-          </div>
-          <div className="work-content">
-            <div className="sm:py-10 py-5 sm:px-5 px-2.5">
-              {workExperiences.map(
-                ({ id, name, pos, icon, duration, title, animation }) => (
-                  <div key={id} className="work-content_container group">
-                    <div className="flex flex-col h-full justify-start items-center py-2">
-                      <div className="work-content_logo">
-                        <img src={icon} alt="logo" className="w-full h-full" />
+    <section className="w-full my-20">
+      <div className="max-w-7xl mx-auto">
+        <h3 className="head-text text-center mb-16">My Work Experience</h3>
+        <div className="flex justify-center px-4">
+          <div className="work-content max-w-3xl w-full bg-[#151030] rounded-2xl p-8">
+            {workExperiences.map(
+              ({ id, name, pos, icon, duration, title, animation }) => (
+                <div
+                  key={id}
+                  className="work-content_container group mb-8 last:mb-0"
+                >
+                  <div className="flex gap-6">
+                    <div className="flex flex-col items-center">
+                      <div className="work-content_logo w-12 h-12 rounded-full overflow-hidden bg-black">
+                        <img
+                          src={icon}
+                          alt="logo"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="work-content_bar" />
+                      <div className="work-content_bar w-[2px] h-full bg-gray-600 mt-4" />
                     </div>
-                    <div className="sm:p-5 px-2.5 py-5">
-                      <p className="font-bold text-white-800">{name}</p>
-                      <p className="text-sm mb-5">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-white">
+                        {name}
+                      </h4>
+                      <p className="text-sm text-gray-400 mt-1">
                         {pos} {duration}
                       </p>
-                      <p className="group-hovwer:text-white transition ease-in-out duration-500">
+                      <p className="text-gray-400 mt-4 leading-relaxed">
                         {title}
                       </p>
                     </div>
                   </div>
-                )
-              )}
-            </div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
